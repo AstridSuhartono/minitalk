@@ -6,7 +6,7 @@
 #    By: astrid <astrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 13:35:59 by astrid            #+#    #+#              #
-#    Updated: 2022/07/06 23:45:47 by astrid           ###   ########.fr        #
+#    Updated: 2022/07/10 00:39:45 by astrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Werror -Wall -Wextra -C
 RM = rm -rf
 
 SRCS = client.c server.c printf/libftprintf.a
-SRCS_BONUS = bonus/client.c bonus/server.c printf/libftprintf.a
+#SRCS_BONUS = bonus/client.c bonus/server.c printf/libftprintf.a
 
 $(NAME):
 	make all -C printf
