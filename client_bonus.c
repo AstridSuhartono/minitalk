@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astrid <astrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 13:27:32 by astrid            #+#    #+#             */
-/*   Updated: 2022/07/10 21:25:14 by astrid           ###   ########.fr       */
+/*   Created: 2022/07/10 20:09:00 by astrid            #+#    #+#             */
+/*   Updated: 2022/07/10 21:25:18 by astrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,22 @@ void	sendCharInByte(int pid, unsigned char c)
 	}
 }
 
-int	main(int argc, char**argv)
+void	handler(int signum)
 {
+	if (signum == SIGUSR1)
+	{
+		ft_printf("Signal from client received");
+		write(1, '\n', 1);
+	}	
+}
+
+int	main(int argc, char **argv)
+{
+	struct  sigaction action;
 	int	pid;
 	int	i;
 
+    action.sa_handler = &handler;
 	i = 0;
 	if (argc != 3)
 	{
@@ -49,11 +60,6 @@ int	main(int argc, char**argv)
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
-	if (pid == 0)
-	{
-		ft_printf("Please enter the server pid\n");
-		return (1);
-	}
 	while (argv[2][i] != '\0')
 	{
 		sendCharInByte(pid, argv[2][i]);

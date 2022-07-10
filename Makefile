@@ -6,38 +6,21 @@
 #    By: astrid <astrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 13:35:59 by astrid            #+#    #+#              #
-#    Updated: 2022/07/10 00:39:45 by astrid           ###   ########.fr        #
+#    Updated: 2022/07/10 16:28:01 by astrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitalk
-CC = gcc
-CFLAGS = -Werror -Wall -Wextra -C
-RM = rm -rf
-
-SRCS = client.c server.c printf/libftprintf.a
-#SRCS_BONUS = bonus/client.c bonus/server.c printf/libftprintf.a
-
-$(NAME):
-	make all -C printf
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
-
-all: $(NAME)
+all:
+	@cd printf && make all
+	@gcc -Wall -Wextra -Werror server.c utils.c printf/libftprintf.a -o server
+	@gcc -Wall -Wextra -Werror client.c utils.c printf/libftprintf.a -o client
 
 clean:
-	$(RM) $(NAME)
-	make clean -C printf
+	@cd printf && make clean
+	@rm -f server
+	@rm -f client
 
 fclean: clean
-	$(RM) $(NAME)
-	make clean -C printf
+	@cd printf && make fclean
 
 re: fclean all
-
-bonus: clean
-	make all -C printf
-	$(CC) $(CFLAGS) $(SRCS_BONUS) -o $(NAME)
-
-bonus_re: fclean bonus
-
-.PHONY: all bonus clean fclean re bonus_re

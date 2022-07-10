@@ -6,8 +6,6 @@
 # include <stdlib.h>
 # include "printf/ft_printf.h"
 
-int		ft_atoi(const char *str);
-void	sendCharInBits(int pid, unsigned char c);
-int		main(int argc, char**argv);
+int	ft_atoi(const char *str);
 
 #endif
