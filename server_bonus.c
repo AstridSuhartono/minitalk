@@ -6,7 +6,13 @@
 /*   By: astrid <astrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:09:18 by astrid            #+#    #+#             */
-/*   Updated: 2022/07/10 21:25:02 by astrid           ###   ########.fr       */
+/*   Updated: 2022/07/10 21:39:14 by astrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minitalk.h"
+
+int	main(int argc, char **argv)
+{
+	return (0);
+}
